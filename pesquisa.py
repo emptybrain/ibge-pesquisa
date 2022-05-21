@@ -28,12 +28,12 @@ class SearchApi(object):
 
     def api_data(self):
         self.data_api = self.json_api
-        #api = self.data_api
-        self.id_ = list(map(lambda dat: dat['id'], self.data_api))
-        self.descricao = list(map(lambda dat: dat['descricao'], self.data_api))
-        self.contexto = list(map(lambda dat: dat['contexto'], self.data_api))
-        self.observacao = list(map(lambda dat: dat['observacao'], self.data_api))
-        self.periodos = list(map(lambda dat: dat['periodos'], self.data_api))
+        api = self.data_api
+        self.id_ = list(map(lambda dat: dat['id'], api))
+        self.descricao = list(map(lambda dat: dat['descricao'], api))
+        self.contexto = list(map(lambda dat: dat['contexto'], api))
+        self.observacao = list(map(lambda dat: dat['observacao'], api))
+        self.periodos = list(map(lambda dat: dat['periodos'], api))
         return self.id_, self.descricao, self.contexto, self.observacao, self.periodos
 
     def get_id(self):
@@ -55,6 +55,8 @@ class SearchApi(object):
     def get_periodos(self):
         self.api_data()
         return self.periodos
+
+
 
 
 class GetDataSearch():
