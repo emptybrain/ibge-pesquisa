@@ -10,7 +10,7 @@ schema:
     "id": 1,
     "nome": "MUNIC - Perfil dos Municípios Brasileiros",
     "observacao": "Perfil dos Municípios Brasileiros - Gestão Pública",
-    "periodos":
+    "periodos": [{}]
 
 """
 
@@ -44,8 +44,35 @@ class SearchById(object):
         self.api_data()
         return self.data_api['descricao']
     
-    def get_periodos(self):
+    def get_data_periodos(self):
         self.api_data()
         return self.data_api['periodos']
     
+    def separate_periods(self):
+        #self.get_data_periodos()
+        self.fonte = list(map(lambda dat: dat['fonte'], self.get_data_periodos()))
+        self.nota = list(map(lambda dat: dat['nota'], self.get_data_periodos()))
+        self.periodo = list(map(lambda dat: dat['periodo'], self.get_data_periodos()))
+        self.publicacao = list(map(lambda dat: dat['publicacao'], self.get_data_periodos()))
+        self.versao = list(map(lambda dat: dat['versao'], self.get_data_periodos()))
+        return self.fonte, self.nota, self.periodo, self.publicacao, self.versao
+
+    def get_period_fonte(self):
+        self.separate_periods()
+        return self.fonte
+
+    def get_period_nota(self):
+        self.separate_periods()
+        return self.nota
+
+    def get_period_periodo(self):
+        self.separate_periods()
+        return self.periodo
+
+    def get_period_publicao(self):
+        self.separate_periods()
+        return self.publicacao
     
+    def get_period_versao(self):
+        self.separate_periods()
+        return self.versao
