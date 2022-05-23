@@ -14,7 +14,6 @@ schema:
 
 """
 
-
 class SearchById(object):
     def __init__(self, search_id=1, json_api=None):
         api = f"https://servicodados.ibge.gov.br/api/v1/pesquisas/{search_id}"
@@ -49,7 +48,6 @@ class SearchById(object):
         return self.data_api['periodos']
     
     def separate_periods(self):
-        #self.get_data_periodos()
         self.fonte = list(map(lambda dat: dat['fonte'], self.get_data_periodos()))
         self.nota = list(map(lambda dat: dat['nota'], self.get_data_periodos()))
         self.periodo = list(map(lambda dat: dat['periodo'], self.get_data_periodos()))
@@ -76,3 +74,4 @@ class SearchById(object):
     def get_period_versao(self):
         self.separate_periods()
         return self.versao
+        
