@@ -29,18 +29,24 @@ class SearchApi(object):
     def api_data(self):
         self.data_api = self.json_api
         api = self.data_api
-        self.id_ = list(map(lambda dat: dat['id'], api))
-        self.nomes = list(map(lambda dat: dat['nome'], api))
-        self.descricao = list(map(lambda dat: dat['descricao'], api))
-        self.contexto = list(map(lambda dat: dat['contexto'], api))
-        self.observacao = list(map(lambda dat: dat['observacao'], api))
-        self.periodos = list(map(lambda dat: dat['periodos'], api))
-        return self.id_, self.descricao, self.contexto, self.observacao, self.periodos, self.nomes
+        self.id_ = list(map(lambda dat: dat["id"], api))
+        self.nomes = list(map(lambda dat: dat["nome"], api))
+        self.descricao = list(map(lambda dat: dat["descricao"], api))
+        self.contexto = list(map(lambda dat: dat["contexto"], api))
+        self.observacao = list(map(lambda dat: dat["observacao"], api))
+        self.periodos = list(map(lambda dat: dat["periodos"], api))
+        return (
+            self.id_,
+            self.descricao,
+            self.contexto,
+            self.observacao,
+            self.periodos,
+            self.nomes,
+        )
 
     def get_id(self):
         self.api_data()
         return self.id_
-
 
     def get_nomes(self):
         self.api_data()
@@ -61,4 +67,3 @@ class SearchApi(object):
     def get_periodos(self):
         self.api_data()
         return self.periodos
-
