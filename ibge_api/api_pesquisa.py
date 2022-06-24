@@ -80,24 +80,16 @@ class Ranking:
 
 
 class Resultado:
-    def indicadores(self, indicador="", localidade=""):
-        url = f"https://servicodados.ibge.gov.br/api/v1/pesquisas/-/indicadores/{indicador}/resultados/{localidade}"
-        req = requests.get(url)
-        try:
-            return req.text
-        except:
-            req.raise_for_status()
-
-    def periodos(self, periodo="", indicador="84043", localidade=""):
-        url = f"https://servicodados.ibge.gov.br/api/v1/pesquisas/-/periodos/{periodo}/indicadores/{indicador}/resultados/{localidade}"
-        req = requests.get(url)
-        try:
-            return req.text
-        except:
-            req.raise_for_status()
-
-    def pesquisa(self, pesquisa_id="13", indicador="1", localidade=""):
+    def indicador(self, pesquisa_id="-", indicador="-", localidade=""):
         url = f"https://servicodados.ibge.gov.br/api/v1/pesquisas/{pesquisa_id}/indicadores/{indicador}/resultados/{localidade}"
+        req = requests.get(url)
+        try:
+            return req.text
+        except:
+            req.raise_for_status()
+
+    def periodos(self, pesquisa_id="-", periodo="", indicador="84043", localidade=""):
+        url = f"https://servicodados.ibge.gov.br/api/v1/pesquisas/{pesquisa_id}/periodos/{periodo}/indicadores/{indicador}/resultados/{localidade}"
         req = requests.get(url)
         try:
             return req.text
@@ -115,7 +107,7 @@ class Resultado:
             req.raise_for_status()
 
     # https://servicodados.ibge.gov.br/api/v1/pesquisas/{pesquisa}/resultados/{localidades}
-    def pesquisa_e_indicadores(self, pesquisa_id="13", localidade="13"):
+    def pesquisa(self, pesquisa_id="13", localidade="13"):
         url = f"https://servicodados.ibge.gov.br/api/v1/pesquisas/{pesquisa_id}/resultados/{localidade}"
         req = requests.get(url)
         try:
