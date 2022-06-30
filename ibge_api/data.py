@@ -3,81 +3,80 @@ import json
 
 UF = []  # TODO add ids for each sigla uf
 
-
-def Queries():
+def quedries():
     queries = []  # TODO add url queries values for endpoints options
 
 
-def ListPesquisas():
+def list_pesquisas():
     data = ApiData().api_pesquisa()
     json_data = json.loads(str(data))
     return json_data
 
 
-def GetPesquisa(id_="36"):
+def get_pesquisa(id_=""):
     data = Identificador().pesquisa(id_)
     json_data = json.loads(str(data))
     return json_data
 
 
-def ListIndicadores(id_="36"):
+def list_indicadores(id_=""):
     data = Indicadores().pesquisa(id_)
     json_data = json.loads(str(data))
     return json_data
 
 
-def GetIndicadores(id_="13", indicador="1"):
+def get_indicadores(id_="", indicador=""):
     data = Indicadores().indicadores(id_, indicador)
     json_data = json.loads(str(data))
     return json_data
 
 
-def ListIndicadoresPeriodos(id_="13", periodo=""):
+def list_indicadores_periodos(id_="", periodo=""):
     data = Indicadores().periodos(id_, periodo)
     json_data = json.loads(str(data))
     return json_data
 
 
-def GetIndicadoresPeriodos(id_="13", periodo="2019", indicador="1"):
+def get_indicadores_periodos(id_="", periodo="", indicador=""):
     data = Indicadores().periodos_e_indicadores(id_, periodo, indicador)
     json_data = json.loads(str(data))
     return json_data
 
 
-def ListRanking(id_="10096", indicador="84043", queries=None):
+def list_ranking(id_="", indicador="", queries=None):
     data = Ranking().indicadores(id_, indicador, queries)
     json_data = json.loads(str(data))
     return json_data
 
 
-def GetPeriodoRanking(
-    id_="10096", indicador="84043", periodo="20200701-20200715", queries=None
+def get_periodo_ranking(
+    id_="", indicador="", periodo="", queries=None
 ):
     data = Ranking().periodos(id_, indicador, periodo, queries)
     json_data = json.loads(str(data))
     return json_data
 
 
-def ListResultado(id_="13", localidade="11|12"):
+def list_resultado(id_="", localidade=""):
     data = Resultado().pesquisa(id_, localidade)
     json_data = json.loads(str(data))
     return json_data
 
 
-def GetIndicadoresResultado(id_="13", indicador="1", localidade="11|12"):
+def get_indicadores_resultado(id_="", indicador="", localidade=""):
     data = Resultado().indicador(id_, indicador, localidade)
     json_data = json.loads(str(data))
     return json_data
 
 
-def GetPeriodoResultado(id_="13", periodo="2020", indicador="1", localidade="11|12"):
+def get_periodo_resultado(id_="", periodo="", indicador="", localidade=""):
     data = Resultado().periodos(id_, periodo, indicador, localidade)
     json_data = json.loads(str(data))
     return json_data
 
 
-def GetPeriodoIndicadoresResultado(
-    id_="13", periodo="2020", indicador="1", localidade="11|12"
+def get_periodo_indicadores_resultado(
+    id_="", periodo="", indicador="", localidade=""
 ):
     data = Resultado().periodos_e_indicadores(id_, periodo, indicador, localidade)
     json_data = json.loads(str(data))
