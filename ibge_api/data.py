@@ -1,4 +1,4 @@
-from ibge_api.api_pesquisa import *
+from .api_pesquisa import *
 import json
 
 UF = []  # TODO add ids for each sigla uf
