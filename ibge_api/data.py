@@ -32,7 +32,7 @@ class DataIndicadores(object):
 
 class DataIndicadoresPeriodos(object):
     def list_indicadores_periodos(self, id_="", periodo=""):
-        data = Indicadores().periodos(id_, periodo)
+        data = Indicadores().periodos_e_indicadores(id_, periodo)
         json_data = json.loads(str(data))
         return json_data
 
