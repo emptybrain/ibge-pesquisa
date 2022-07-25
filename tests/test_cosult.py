@@ -1,6 +1,7 @@
 import pytest
 from ibge_api.data import DataPesquisa, DataIndicadores, DataIndicadoresPeriodos
 from ibge_api.data import DataRaking, DataResultado
+from ibge_api.data import UF
 
 
 # @pytest.mark.skip("Pesquisa skip")
@@ -62,11 +63,13 @@ class TestRanking:
 class TestResultado:
     def test_lis_re(self):
         resultado = DataResultado()
-        for lista in resultado.list_resultado("13", "11"):
+        set_localidade = UF[0]
+        for lista in resultado.list_resultado("13", set_localidade["SP"]):
             re = ["localidade"]
             assert re
 
     def test_get_re_ind(self):
         resultado = DataResultado()
-        re = resultado.get_indicadores_resultado("13", "1", "11")
+        set_localidade = UF[0]
+        re = resultado.get_indicadores_resultado("13", "1", set_localidade["SP"])
         assert re[0]["res"]
